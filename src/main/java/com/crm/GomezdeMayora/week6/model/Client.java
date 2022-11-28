@@ -15,6 +15,14 @@ public class Client {
         this.product = product;
     }
 
+    public Client(int id, Oportunity oportunity, String product) {
+        this.id = id;
+        this.oportunity = oportunity;
+        this.product = product;
+        this.contacts = new ArrayList<>();
+    }
+
+
     public int getId() {
         return id;
     }
