@@ -15,6 +15,9 @@ public class Client {
         this.product = product;
     }
 
+    public Client() {
+    }
+
     public Client(int id, Oportunity oportunity, String product) {
         this.id = id;
         this.oportunity = oportunity;
