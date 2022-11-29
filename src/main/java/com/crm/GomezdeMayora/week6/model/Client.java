@@ -2,21 +2,23 @@ package com.crm.GomezdeMayora.week6.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "Clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int client_id;
+    @OneToOne
     @JoinColumn(name = "opportunity_id")
-    @OneToOne(mappedBy = "opportunity_id")
     private Opportunity opportunity;
-    @OneToMany(mappedBy = "client_id")
-    private ArrayList<Contact> contacts;
+    @OneToMany(mappedBy = "client")
+    private List<Contact> contacts;
     @Column(name="Product")
     private String product;
 
-    public Client(int id, Opportunity opportunity, ArrayList<Contact> contacts, String product) {
+    public Client(int id, Opportunity opportunity, List<Contact> contacts, String product) {
         this.client_id = id;
         this.opportunity = opportunity;
         this.contacts = contacts;
@@ -55,7 +57,7 @@ public class Client {
         this.opportunity = opportunity;
     }
 
-    public ArrayList<Contact> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 

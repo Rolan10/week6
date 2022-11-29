@@ -1,17 +1,22 @@
 package com.crm.GomezdeMayora.week6.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
-
+@Entity
+@Table(name = "Contacts")
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int contact_id;
-    @Column(name="Contact method")
+    @Column(name="contact_method")
     private String method;
-    @Column(name="Contact date")
+    @Column(name="contact_date")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
-    @Column(name="Contact detail")
+    @Column(name="contact_detail")
     private String information;
 
     @ManyToOne

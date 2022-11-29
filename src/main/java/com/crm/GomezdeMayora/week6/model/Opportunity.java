@@ -2,26 +2,26 @@ package com.crm.GomezdeMayora.week6.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
+@Table(name = "opportunities")
 public class Opportunity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private int opportunity_id;
-    @Column(name="Name")
+    @Column(name="name")
     private String name;
-    @Column(name="Last Name")
+    @Column(name="last_Name")
     private String lastName;
-    @Column(name="Status")
+    @Column(name="status")
     private boolean status;
-    @OneToMany(mappedBy = "opportunity_id")
-    private ArrayList<Contact> contacts;
+    @OneToMany(mappedBy = "opportunity")
+    private List<Contact> contacts;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "opportunity")
     private Client client;
-
-    public boolean isStatus() {
-        return status;
-    }
 
     public Client getClient() {
         return client;
@@ -30,6 +30,11 @@ public class Opportunity {
     public void setClient(Client client) {
         this.client = client;
     }
+
+    public boolean isStatus() {
+        return status;
+    }
+
 
     public Opportunity(int id, String name, String lastName, boolean status, ArrayList<Contact> contacts) {
         this.opportunity_id = id;
@@ -67,7 +72,7 @@ public class Opportunity {
         this.status = status;
     }
 
-    public ArrayList<Contact> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 

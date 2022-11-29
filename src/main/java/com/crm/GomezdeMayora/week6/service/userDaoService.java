@@ -1,9 +1,10 @@
 package com.crm.GomezdeMayora.week6.service;
 
 import com.crm.GomezdeMayora.week6.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-
+@Component
 public class userDaoService {
 
     private static ArrayList<User> users = new ArrayList<>();
