@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class clientController {
 
-    clientDaoService service;
+    private clientDaoService service;
 
     public clientController(clientDaoService service) {
         this.service = service;

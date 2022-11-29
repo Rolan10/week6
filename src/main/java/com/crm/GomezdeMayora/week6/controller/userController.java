@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class userController {
@@ -20,7 +21,7 @@ public class userController {
     }
 
     @GetMapping("/users")
-    public ArrayList<User> getUsers() {
+    public List<User> getUsers() {
         return service.getUsers();
     }
 

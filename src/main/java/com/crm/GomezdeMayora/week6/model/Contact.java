@@ -48,6 +48,40 @@ public class Contact {
         }
     }
 
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public int getOpportunity() {
+        return opportunity.getOpportunity_id();
+    }
+
+    public void setOpportunity(Opportunity opportunity) {
+        this.opportunity = opportunity;
+    }
+
+    public int getClient() {
+        if (client != null) {
+            return client.getClient_id();
+        } else {
+            return -1;
+        }
+       // return client.getClient_id();
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Contact(int contact_id, String method, Date date, String information, Opportunity opportunity, Client client) {
+        this.contact_id = contact_id;
+        this.method = method;
+        this.date = date;
+        this.information = information;
+        this.opportunity = opportunity;
+        this.client = client;
+    }
+
     public Contact() {
     }
 
