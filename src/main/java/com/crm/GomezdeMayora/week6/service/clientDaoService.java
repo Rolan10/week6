@@ -2,7 +2,6 @@ package com.crm.GomezdeMayora.week6.service;
 
 import com.crm.GomezdeMayora.week6.model.Client;
 import com.crm.GomezdeMayora.week6.model.Contact;
-import com.crm.GomezdeMayora.week6.model.Oportunity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,12 +14,15 @@ public class clientDaoService {
 
     //static module to initialize the list with some clients.
     static {
-        clients.add(new Client(++id, new Oportunity(1, "Rolan", "Gomez de Mayora",false,new ArrayList<Contact>()), "Product 1"));
+        //clients.add(new Client(++id, new Oportunity(1, "Rolan", "Gomez de Mayora",false,new ArrayList<Contact>()), "Product 1"));
 
     }
     public ArrayList<Client> getClients() {
         return null;
     }
+    /**
+    * This method will create a new client from an existing oportunity.
+    **/
     public void addClient(Client client) {
 
     }
@@ -29,5 +31,8 @@ public class clientDaoService {
     }
     public Client deleteClient(int id) {
         return null;
+    }
+    public void addContactToClient(int id, Contact contact) {
+
     }
 }

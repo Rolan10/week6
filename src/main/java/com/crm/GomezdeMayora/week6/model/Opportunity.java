@@ -1,29 +1,50 @@
 package com.crm.GomezdeMayora.week6.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
-public class Oportunity {
-    private int id;
+public class Opportunity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int opportunity_id;
+    @Column(name="Name")
     private String name;
+    @Column(name="Last Name")
     private String lastName;
+    @Column(name="Status")
     private boolean status;
+    @OneToMany(mappedBy = "opportunity_id")
     private ArrayList<Contact> contacts;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Client client;
 
-    public Oportunity(int id, String name, String lastName, boolean status, ArrayList<Contact> contacts) {
-        this.id = id;
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Opportunity(int id, String name, String lastName, boolean status, ArrayList<Contact> contacts) {
+        this.opportunity_id = id;
         this.name = name;
         this.lastName = lastName;
         this.status = status;
         this.contacts = contacts;
     }
 
-    public int getId() {
-        return id;
+    public int getOpportunity_id() {
+        return opportunity_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOpportunity_id(int opportunity_id) {
+        this.opportunity_id = opportunity_id;
     }
 
     public String getName() {
@@ -40,10 +61,6 @@ public class Oportunity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public boolean isStatus() {
-        return status;
     }
 
     public void setStatus(boolean status) {
@@ -64,7 +81,7 @@ public class Oportunity {
     @Override
     public String toString() {
         return "Oportunity{" +
-                "id=" + id +
+                "id=" + opportunity_id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", status=" + status +

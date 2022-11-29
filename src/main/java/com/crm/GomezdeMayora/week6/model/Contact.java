@@ -1,35 +1,67 @@
 package com.crm.GomezdeMayora.week6.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 public class Contact {
-    private int id;
-    private int method;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int contact_id;
+    @Column(name="Contact method")
+    private String method;
+    @Column(name="Contact date")
     private Date date;
-    private String description;
+    @Column(name="Contact detail")
+    private String information;
 
+    @ManyToOne
+    @JoinColumn(name="opportunity_id")
+    private Opportunity opportunity;
+
+    @ManyToOne
+    @JoinColumn(name="client_id")
+    private Client client;
 
     public Contact(int id, int method, Date date, String description) {
-        this.id = id;
-        this.method = method;
+        this.contact_id = id;
         this.date = date;
-        this.description = description;
+        this.information = description;
+        switch(method){
+            case 1 : this.method = "Email";
+                break;
+            case 2 : this.method = "Phone";
+                break;
+            case 3 : this.method = "In Person";
+                break;
+
+            default: this.method = "Other";
+        }
     }
 
-    public int getId() {
-        return id;
+    public int getContact_id() {
+        return contact_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setContact_id(int contact_id) {
+        this.contact_id = contact_id;
     }
 
-    public int getMethod() {
+    public String getMethod() {
         return method;
     }
 
     public void setMethod(int method) {
-        this.method = method;
+        switch(method){
+            case 1 : this.method = "Email";
+            break;
+            case 2 : this.method = "Phone";
+            break;
+            case 3 : this.method = "In Person";
+            break;
+
+            default: this.method = "Other";
+        }
+
     }
 
     public Date getDate() {
@@ -40,20 +72,20 @@ public class Contact {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getInformation() {
+        return information;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setInformation(String information) {
+        this.information = information;
     }
     @Override
     public String toString() {
         return "Contact{" +
-                "id=" + id +
+                "id=" + contact_id +
                 ", method=" + method +
                 ", date=" + date +
-                ", description='" + description + '\'' +
+                ", description='" + information + '\'' +
                 '}';
     }
 }

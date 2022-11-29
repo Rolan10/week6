@@ -13,18 +13,14 @@ public class userDaoService {
     }
 
     public ArrayList<User> getUsers() {
-        return users;
+        return null;
     }
     public User addUser(User user) {
-        users.add(user);
-        return user;
+
+        return null;
     }
     public User Login(User user) {
-        for (User user1 : users) {
-            if (user1.getEmail().equals(user.getEmail()) && user1.getPassword().equals(user.getPassword())) {
-                return user1;
-            }
-        }
+
         return null;
     }
 }

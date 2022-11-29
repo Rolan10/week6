@@ -1,16 +1,24 @@
 package com.crm.GomezdeMayora.week6.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
 public class Client {
-    private int id;
-    private Oportunity oportunity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int client_id;
+    @JoinColumn(name = "opportunity_id")
+    @OneToOne(mappedBy = "opportunity_id")
+    private Opportunity opportunity;
+    @OneToMany(mappedBy = "client_id")
     private ArrayList<Contact> contacts;
+    @Column(name="Product")
     private String product;
 
-    public Client(int id, Oportunity oportunity, ArrayList<Contact> contacts, String product) {
-        this.id = id;
-        this.oportunity = oportunity;
+    public Client(int id, Opportunity opportunity, ArrayList<Contact> contacts, String product) {
+        this.client_id = id;
+        this.opportunity = opportunity;
         this.contacts = contacts;
         this.product = product;
     }
@@ -18,28 +26,33 @@ public class Client {
     public Client() {
     }
 
-    public Client(int id, Oportunity oportunity, String product) {
-        this.id = id;
-        this.oportunity = oportunity;
+    public Client(int id, Opportunity opportunity, String product) {
+        this.client_id = id;
+        this.opportunity = opportunity;
         this.product = product;
         this.contacts = new ArrayList<>();
     }
 
+    public Client(Opportunity opportunity, String product) {
+        this.opportunity = opportunity;
+        this.product = product;
+        this.contacts = new ArrayList<>();
+    }
 
     public int getId() {
-        return id;
+        return client_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.client_id = id;
     }
 
-    public Oportunity getOportunity() {
-        return oportunity;
+    public Opportunity getOportunity() {
+        return opportunity;
     }
 
-    public void setOportunity(Oportunity oportunity) {
-        this.oportunity = oportunity;
+    public void setOportunity(Opportunity opportunity) {
+        this.opportunity = opportunity;
     }
 
     public ArrayList<Contact> getContacts() {
@@ -61,8 +74,8 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + id +
-                ", oportunity=" + oportunity +
+                "id=" + client_id +
+                ", oportunity=" + opportunity +
                 ", contacts=" + contacts +
                 ", product='" + product + '\'' +
                 '}';
