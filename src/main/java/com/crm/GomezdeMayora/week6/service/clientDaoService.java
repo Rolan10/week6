@@ -1,25 +1,22 @@
 package com.crm.GomezdeMayora.week6.service;
 
+import com.crm.GomezdeMayora.week6.Repositories.clientRepository;
 import com.crm.GomezdeMayora.week6.model.Client;
 import com.crm.GomezdeMayora.week6.model.Contact;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class clientDaoService {
 
-    private static int id = 0;
-    private static ArrayList<Client> clients = new ArrayList<>();
+    @Autowired
+    private clientRepository clientrepository;
 
-    //static module to initialize the list with some clients.
-    static {
-        //clients.add(new Client(++id, new Oportunity(1, "Rolan", "Gomez de Mayora",false,new ArrayList<Contact>()), "Product 1"));
-
-    }
-
-    public ArrayList<Client> getClients() {
-        return null;
+    public List<Client> getClients() {
+        return clientrepository.findAll();
     }
 
     /**

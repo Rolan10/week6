@@ -1,23 +1,21 @@
 package com.crm.GomezdeMayora.week6.service;
 
+import com.crm.GomezdeMayora.week6.Repositories.opportunityRepository;
 import com.crm.GomezdeMayora.week6.model.Contact;
 import com.crm.GomezdeMayora.week6.model.Opportunity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class opportunityDaoService {
+    @Autowired
+    private opportunityRepository opportunityrepository;
 
-    private static ArrayList<Opportunity> opportunities = new ArrayList<>();
-    private static int id = 0;
-
-    static {
-        opportunities.add(new Opportunity(++id, "Rolan", "Gomez de Mayora", false, new ArrayList<Contact>()));
-    }
-
-    public ArrayList<Opportunity> getOpportunities() {
-        return null;
+    public List<Opportunity> getOpportunities() {
+        return opportunityrepository.findAll();
     }
 
     public Opportunity getOpportunityById(int id) {

@@ -48,6 +48,9 @@ public class Contact {
         }
     }
 
+    public Contact() {
+    }
+
     public int getContact_id() {
         return contact_id;
     }

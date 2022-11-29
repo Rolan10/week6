@@ -43,6 +43,9 @@ public class Opportunity {
         this.status = status;
         this.contacts = contacts;
     }
+    public Opportunity() {
+
+    }
 
     public int getOpportunity_id() {
         return opportunity_id;

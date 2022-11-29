@@ -6,6 +6,7 @@ import com.crm.GomezdeMayora.week6.service.clientDaoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class clientController {
@@ -22,7 +23,7 @@ public class clientController {
     }
 
     @GetMapping("/clients")
-    public ArrayList<Client> getAllClients() {
+    public List<Client> getAllClients() {
         return service.getClients();
     }
 
