@@ -1,13 +1,11 @@
-package com.crm.GomezdeMayora.week6;
+package com.crm.GomezdeMayora.week6.oportunityTests;
 
-import com.crm.GomezdeMayora.week6.service.clientDaoService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Week6ApplicationTests {
+public class oportunityTests {
 
     @BeforeAll
     public static void setUp() {
@@ -18,5 +16,4 @@ class Week6ApplicationTests {
     public void tearDown() {
         //tearDown
     }
-
 }

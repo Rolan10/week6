@@ -1,4 +1,5 @@
-package com.crm.GomezdeMayora.week6;
+package com.crm.GomezdeMayora.week6.clientTests;
+
 
 import com.crm.GomezdeMayora.week6.service.clientDaoService;
 import org.junit.jupiter.api.AfterEach;
@@ -6,17 +7,25 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest
-class Week6ApplicationTests {
+public class clientTests {
+    private static clientDaoService client;
 
     @BeforeAll
     public static void setUp() {
-        //setup
+        client = new clientDaoService();
     }
 
     @AfterEach
     public void tearDown() {
-        //tearDown
+        //client = null;
+    }
+
+    @Test
+    public void testGetClients() {
+        assertEquals(1, client.getClients().size());
     }
 
 }

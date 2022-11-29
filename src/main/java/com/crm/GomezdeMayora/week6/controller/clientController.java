@@ -3,19 +3,33 @@ package com.crm.GomezdeMayora.week6.controller;
 
 import com.crm.GomezdeMayora.week6.model.Client;
 import com.crm.GomezdeMayora.week6.service.clientDaoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 public class clientController {
 
-    clientDaoService service = new clientDaoService();
+    clientDaoService service;
 
-
-    @GetMapping("/client/{id}")
+    public clientController(clientDaoService service) {
+        this.service =  service;
+    }
+    @GetMapping("/clients/{id}")
     public Client getClient(@PathVariable int id) {
         return service.getClientById(id);
+    }
+    @GetMapping("/clients")
+    public ArrayList<Client> getAllClients() {
+        return service.getClients();
+    }
+    @PostMapping("/addclients/{client}")
+    public Client addClient(@PathVariable Client client) {
+        service.addClient(client);
+        return client;
+    }
+    @DeleteMapping("/deleteclients/{id}")
+    public Client deleteClient(@PathVariable int id) {
+        return service.deleteClient(id);
     }
 }
