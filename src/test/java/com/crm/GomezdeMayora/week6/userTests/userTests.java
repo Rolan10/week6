@@ -14,22 +14,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-@SpringBootTest
+@SpringBootTest(classes= Week6Application.class)
 public class userTests {
 
     @Autowired
-    private static userRepository testService;
+    private userDaoService testService;
 
     @BeforeEach
     public void setUp() {
         //setup
-      // testService = new userDaoService();
+        //testService = new userDaoService(); // Why this breaks the test?
     }
 
     @AfterAll
     public static void tearDown() {
         //tearDown
-      //  testService = null;
+        //testService = null;
     }
 
     @Test
@@ -37,8 +37,10 @@ public class userTests {
         String username = "solera@solera.com";
         String password = "bootcamp4";
         User user = new User(username, password);
-        User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
+       // User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
+        User result = testService.Login(user);
         Assertions.assertEquals(user.getEmail(), result.getEmail());
+        Assertions.assertEquals(user.getPassword(), result.getPassword());
     }
 
     @Test
@@ -46,8 +48,11 @@ public class userTests {
         String username = "SOLERA@SOLERA.COM";
         String password = "bootcamp4";
         User user = new User(username, password);
-        User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
-        assert (result == user);
+      //  User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
+        User result = testService.Login(user);
+        user.setEmail(user.getEmail().toLowerCase());
+        Assertions.assertEquals(user.getEmail(), result.getEmail());
+        Assertions.assertEquals(user.getPassword(), result.getPassword());
     }
 
 }

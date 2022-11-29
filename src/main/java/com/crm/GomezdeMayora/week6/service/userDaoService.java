@@ -32,10 +32,8 @@ public class userDaoService {
     }
 
     public User Login(@NotNull User user) {
-        System.out.println(userrepository);
         User result = userrepository.findUserByEmailAndPassword(user.getEmail(), user.getPassword());
         if (result == null) return null;
-
-        return user;
+        return result;
     }
 }
