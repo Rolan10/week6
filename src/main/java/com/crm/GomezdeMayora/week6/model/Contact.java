@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 @Table(name = "Contacts")
 public class Contact {
@@ -11,35 +12,39 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int contact_id;
-    @Column(name="contact_method")
+    @Column(name = "contact_method")
     private String method;
-    @Column(name="contact_date")
+    @Column(name = "contact_date")
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
-    @Column(name="contact_detail")
+    @Column(name = "contact_detail")
     private String information;
 
     @ManyToOne
-    @JoinColumn(name="opportunity_id")
+    @JoinColumn(name = "opportunity_id")
     private Opportunity opportunity;
 
     @ManyToOne
-    @JoinColumn(name="client_id")
+    @JoinColumn(name = "client_id")
     private Client client;
 
     public Contact(int id, int method, Date date, String description) {
         this.contact_id = id;
         this.date = date;
         this.information = description;
-        switch(method){
-            case 1 : this.method = "Email";
+        switch (method) {
+            case 1:
+                this.method = "Email";
                 break;
-            case 2 : this.method = "Phone";
+            case 2:
+                this.method = "Phone";
                 break;
-            case 3 : this.method = "In Person";
+            case 3:
+                this.method = "In Person";
                 break;
 
-            default: this.method = "Other";
+            default:
+                this.method = "Other";
         }
     }
 
@@ -56,15 +61,19 @@ public class Contact {
     }
 
     public void setMethod(int method) {
-        switch(method){
-            case 1 : this.method = "Email";
-            break;
-            case 2 : this.method = "Phone";
-            break;
-            case 3 : this.method = "In Person";
-            break;
+        switch (method) {
+            case 1:
+                this.method = "Email";
+                break;
+            case 2:
+                this.method = "Phone";
+                break;
+            case 3:
+                this.method = "In Person";
+                break;
 
-            default: this.method = "Other";
+            default:
+                this.method = "Other";
         }
 
     }
@@ -84,6 +93,7 @@ public class Contact {
     public void setInformation(String information) {
         this.information = information;
     }
+
     @Override
     public String toString() {
         return "Contact{" +

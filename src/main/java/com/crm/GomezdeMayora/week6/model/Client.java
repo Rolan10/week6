@@ -15,7 +15,7 @@ public class Client {
     private Opportunity opportunity;
     @OneToMany(mappedBy = "client")
     private List<Contact> contacts;
-    @Column(name="Product")
+    @Column(name = "Product")
     private String product;
 
     public Client(int id, Opportunity opportunity, List<Contact> contacts, String product) {
@@ -75,12 +75,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + client_id +
-                ", oportunity=" + opportunity +
-                ", contacts=" + contacts +
-                ", product='" + product + '\'' +
-                '}';
+        return "Client{" + "id=" + client_id + ", oportunity=" + opportunity + ", contacts=" + contacts + ", product='" + product + '\'' + '}';
     }
 
     public void addContact(Contact contact) {

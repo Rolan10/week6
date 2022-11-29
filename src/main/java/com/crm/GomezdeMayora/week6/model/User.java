@@ -9,16 +9,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int id;
-   // @Column(unique = true, name="email")
-    @Column(name="email")
+    // @Column(unique = true, name="email")
+    @Column(name = "email")
     private String email;
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
+
     public String getEmail() {
         return email;
     }

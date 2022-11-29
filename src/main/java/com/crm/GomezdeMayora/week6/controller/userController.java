@@ -18,16 +18,19 @@ public class userController {
     public userController(userDaoService service) {
         this.service = service;
     }
+
     @GetMapping("/users")
     public ArrayList<User> getUsers() {
         return service.getUsers();
     }
+
     @PostMapping("/addusers/{user}")
     public User addUser(@PathVariable User user) {
         return service.addUser(user);
     }
+
     @PostMapping("/login/{user}")
-    public User Login(@PathVariable User user){
+    public User Login(@PathVariable User user) {
         return null;
     }
 }

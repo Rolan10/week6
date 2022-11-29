@@ -24,9 +24,11 @@ public class opportunityDaoService {
 
         return null;
     }
+
     public Opportunity addOpportunity(Opportunity opportunity) {
         return null;
     }
+
     public void addContactToOpportunity(int id, Contact contact) {
 
     }

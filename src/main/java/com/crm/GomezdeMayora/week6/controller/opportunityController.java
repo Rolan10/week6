@@ -15,10 +15,12 @@ public class opportunityController {
     public opportunityController(opportunityDaoService service) {
         this.service = service;
     }
+
     @GetMapping("/opportunities/{id}")
     public Opportunity getOpportunity(@PathVariable int id) {
         return service.getOpportunityById(id);
     }
+
     @GetMapping("/opportunities")
     public ArrayList<Opportunity> getAllOpportunities() {
         return service.getOpportunities();

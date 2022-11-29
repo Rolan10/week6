@@ -11,11 +11,11 @@ public class Opportunity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int opportunity_id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="last_Name")
+    @Column(name = "last_Name")
     private String lastName;
-    @Column(name="status")
+    @Column(name = "status")
     private boolean status;
     @OneToMany(mappedBy = "opportunity")
     private List<Contact> contacts;
@@ -79,7 +79,8 @@ public class Opportunity {
     public void setContacts(ArrayList<Contact> contacts) {
         this.contacts = contacts;
     }
-    public void addContact(Contact contact){
+
+    public void addContact(Contact contact) {
         this.contacts.add(contact);
     }
 
