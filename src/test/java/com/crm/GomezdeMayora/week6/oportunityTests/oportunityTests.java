@@ -46,4 +46,9 @@ public class oportunityTests {
         assertEquals(0, cont);
 
     }
+    @Test
+    public void getOpportunityById_WhenCalled_HandleEmptyResultDataAccessException() {
+        Opportunity opportunity = opportunityService.getOpportunityById(3); // The id 3 doesn't exist in database.
+        Assertions.assertThat(opportunity).isNull();
+    }
 }
