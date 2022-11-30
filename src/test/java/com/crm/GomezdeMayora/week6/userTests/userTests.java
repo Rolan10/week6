@@ -33,7 +33,7 @@ public class userTests {
     }
 
     @Test
-    public void Login_LoggingInWithCorrectCredentials_ReturnsTrue() { // In a real project we should encrypt the password for security reasons.
+    public void Login_LoggingInWithCorrectCredentials_ReturnsTheUser() { // In a real project we should encrypt the password for security reasons.
         String username = "solera@solera.com";
         String password = "bootcamp4";
         User user = new User(username, password);
@@ -44,7 +44,7 @@ public class userTests {
     }
 
     @Test
-    public void Login_LoggingWithEmailUpperCase_ReturnsTrue() { // In a real project we should encrypt the password for security reasons.
+    public void Login_LoggingWithEmailUpperCase_ReturnsTheUser() { // In a real project we should encrypt the password for security reasons.
         String username = "SOLERA@SOLERA.COM";
         String password = "bootcamp4";
         User user = new User(username, password);
