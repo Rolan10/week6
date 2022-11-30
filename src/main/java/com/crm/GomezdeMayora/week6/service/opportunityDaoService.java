@@ -17,7 +17,7 @@ public class opportunityDaoService {
     private opportunityRepository opportunityrepository;
 
     public List<Opportunity> getOpportunities() {
-        return null;
+        return opportunityrepository.findAll();
     }
 
     public Opportunity getOpportunityById(int id) {

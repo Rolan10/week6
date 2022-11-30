@@ -38,8 +38,6 @@ public class oportunityTests {
         List<Opportunity> opportunityList = opportunityService.getOpportunities();
         int cont = 0;
         for (Opportunity opportunity : opportunityList) {
-            //Assertions.assertThat(opportunity.getContacts() != null);
-            System.out.println(opportunity.getContacts().size());
             if (opportunity.getContacts().size() == 0) {
                 cont++;
             }
