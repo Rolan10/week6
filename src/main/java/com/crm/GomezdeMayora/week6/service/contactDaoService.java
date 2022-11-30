@@ -22,7 +22,7 @@ public class contactDaoService {
     private clientDaoService ClientService;
 
     public List<Contact> getContacts() {
-        return null;
+        return contactrepository.findAll();
     }
     public Contact getContactById(int id) {
         return null;
