@@ -29,6 +29,13 @@ public class opportunityDaoService {
         //Check that there is no opportunity with the same name and lastname.
         //add opportunity.
         //return opportunity.
+
+        // if not opportunity found, return null. Exception is controlled by the interface.
+        Opportunity p =  opportunityrepository.findOpportunityByNameAndLastName(opportunity.getName(), opportunity.getLastName()).orElse(null);
+        if(p == null){
+            opportunityrepository.save(opportunity);
+            return opportunity;
+        }
         return null;
     }
 

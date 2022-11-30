@@ -56,7 +56,7 @@ public class oportunityTests {
     public void addOpportunity_WhenOpportunityExistInDB_ReturnsNull() {
         Opportunity opportunity = new Opportunity();
         opportunity.setName("Rolan");
-        opportunity.setLastName("Gomez");
+        opportunity.setLastName("Gomez de Mayora");
         Opportunity result = opportunityService.addOpportunity(opportunity);
         Assertions.assertThat(result).isNull();
     }
