@@ -25,7 +25,10 @@ public class opportunityDaoService {
         return opportunityrepository.findById(id).orElse(null); // if not opportunity found, return null. Exception is controlled by the interface.
     }
 
-    public Opportunity addOpportunity(Opportunity opportunity) {
+    public Opportunity addOpportunity(Opportunity opportunity) {// By a lack of time the test will insert data in Database.
+        //Check that there is no opportunity with the same name and lastname.
+        //add opportunity.
+        //return opportunity.
         return null;
     }
 

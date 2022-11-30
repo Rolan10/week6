@@ -51,4 +51,14 @@ public class oportunityTests {
         Opportunity opportunity = opportunityService.getOpportunityById(-1); // The id -1 doesn't exist in database.
         Assertions.assertThat(opportunity).isNull();
     }
+
+    @Test
+    public void addOpportunity_WhenOpportunityExistInDB_ReturnsNull() {
+        Opportunity opportunity = new Opportunity();
+        opportunity.setName("Rolan");
+        opportunity.setLastName("Gomez");
+        Opportunity result = opportunityService.addOpportunity(opportunity);
+        Assertions.assertThat(result).isNull();
+    }
+
 }
