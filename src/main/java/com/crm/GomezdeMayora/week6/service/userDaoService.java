@@ -5,6 +5,7 @@ import com.crm.GomezdeMayora.week6.model.User;
 import org.hibernate.query.Query;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -32,8 +33,13 @@ public class userDaoService {
     }
 
     public User Login(@NotNull User user) {
+        try{
         User result = userrepository.findUserByEmailAndPassword(user.getEmail(), user.getPassword());
-        if (result == null) return null;
-        return result;
+            if (result == null) return null;
+            return result;
+        }catch (EmptyResultDataAccessException e){
+            return new User("","");
+        }
+
     }
 }
