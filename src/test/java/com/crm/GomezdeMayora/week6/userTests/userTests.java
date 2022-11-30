@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class userTests {
 
     @Autowired
-    private userDaoService testService;
+    private userDaoService testService; //We need to Autowire the service to test it.
 
     @BeforeEach
     public void setUp() {
@@ -37,7 +37,6 @@ public class userTests {
         String username = "solera@solera.com";
         String password = "bootcamp4";
         User user = new User(username, password);
-       // User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
         User result = testService.Login(user);
         Assertions.assertEquals(user.getEmail(), result.getEmail());
         Assertions.assertEquals(user.getPassword(), result.getPassword());
@@ -48,7 +47,6 @@ public class userTests {
         String username = "SOLERA@SOLERA.COM";
         String password = "bootcamp4";
         User user = new User(username, password);
-      //  User result = testService.findUserByEmailAndPassword(user.getEmail(),user.getPassword());
         User result = testService.Login(user);
         user.setEmail(user.getEmail().toLowerCase());
         Assertions.assertEquals(user.getEmail(), result.getEmail());
