@@ -14,8 +14,33 @@ public class contactDaoService {
     @Autowired
     private contactRepository contactrepository;
 
+    //Need access to opportunityDaoService to create a contact for the opportunity.
+    @Autowired
+    private opportunityDaoService OpportunityService;
+    //Need access to clientDaoService to create a contact for the client.
+    @Autowired
+    private clientDaoService ClientService;
 
     public List<Contact> getContacts() {
-        return contactrepository.findAll();
+        return null;
     }
+    public Contact getContactById(int id) {
+        return null;
+    }
+
+    /**
+     * This method will check if the oportunity for this contact already exists.
+     * if so, it will check if that oportunity has become already a client to add it.
+     * otherwise it will add the contact to the list of oportunities.
+     * If the oportunity does not exist, it will create a new oportunity and add the contact to the list of opportunities.
+     *
+     * @param contact: Contact to be added to the list of contacts.
+     * @param name: Name of the opportunity.
+     * @param lastName: Lastname of the opportunity.
+     * @return the contact that has been added to the list of contacts.
+     */
+    public Contact addContact(Contact contact,String name, String lastName) {
+        return null;
+    }
+
 }

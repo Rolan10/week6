@@ -28,14 +28,5 @@ public class opportunityController {
     }
 
 
-    /**
-     * This method will check if the oportunity for this contact already exists.
-     * if so, it will check if that oportunity has become already a client to add it.
-     * otherwise it will add the contact to the list of oportunities.
-     * If the oportunity does not exist, it will create a new oportunity and add the contact to the list of opportunities.
-     *
-     * @param contact: Contact to be added to the list of contacts
-     * @return the contact that has been added to the list of contacts
-     *
-     */
+
 }

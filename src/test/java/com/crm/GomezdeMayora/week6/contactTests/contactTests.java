@@ -1,20 +1,36 @@
 package com.crm.GomezdeMayora.week6.contactTests;
 
-import com.crm.GomezdeMayora.week6.service.clientDaoService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
+import com.crm.GomezdeMayora.week6.Week6Application;
+
+import com.crm.GomezdeMayora.week6.model.Contact;
+import com.crm.GomezdeMayora.week6.service.contactDaoService;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import javax.transaction.Transactional;
+import java.util.List;
+
+@SpringBootTest(classes = Week6Application.class)
+@Transactional // This annotation is used to rollback the changes made in the database after the test.
 public class contactTests {
 
-    @BeforeAll
-    public static void setUp() {
-        //setup
-    }
+    @Autowired
+    private contactDaoService contactService;
 
-    @AfterEach
-    public void tearDown() {
-        //tearDown
+    @Test
+    public void getContacts_WhenCalled_ReturnsNoContactWithoutOpportunitiesOrClient() {
+
+        List<Contact> contactList = contactService.getContacts();
+        int cont = 0;
+        for (Contact contact : contactList) {
+            if (contact.getContact_id() == -1 && contact.getClient() == -1) { //If there is a contact without opportunities or client, the test fails.
+                cont++;
+            }
+
+        }
+        Assertions.assertThat(cont == 0);
     }
 }
