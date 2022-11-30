@@ -15,7 +15,7 @@ public class Contact {
     @Column(name = "contact_method")
     private String method;
     @Column(name = "contact_date")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+  //  @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
     @Column(name = "contact_detail")
     private String information;
