@@ -27,7 +27,7 @@ public class clientDaoService {
     }
 
     public Client getClientById(int id) { // incrementar id
-        return null;
+        return clientrepository.findById(id).orElse(null);
     }
 
     public Client deleteClient(int id) {

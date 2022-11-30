@@ -3,6 +3,7 @@ package com.crm.GomezdeMayora.week6.service;
 import com.crm.GomezdeMayora.week6.Repositories.clientRepository;
 import com.crm.GomezdeMayora.week6.Repositories.contactRepository;
 import com.crm.GomezdeMayora.week6.model.Contact;
+import com.crm.GomezdeMayora.week6.model.Opportunity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +41,23 @@ public class contactDaoService {
      * @return the contact that has been added to the list of contacts.
      */
     public Contact addContact(Contact contact,String name, String lastName) {
-        return null;
+
+        Opportunity op = OpportunityService.addOpportunity(new Opportunity(name, lastName));
+        if(op != null){//If the opportunity has been created.
+            contact.setOpportunity(op); // add the opportunity to the contact.
+            contactrepository.save(contact); //save the contact.
+            return contact; //return the contract.
+        }
+        else {
+            op= OpportunityService.findOpportunityByNameAndLastName(name, lastName); //get the opportunity that already exists.
+            if(op.isStatus()) {//If a Client exists for this opportunity
+               contact.setClient(ClientService.getClientById(op.getClient())); //get the client and set it into the contact.
+            }
+            else contact.setOpportunity(op);
+
+            contactrepository.save(contact); //save the contact.
+            return contact;
+        }
     }
 
 }

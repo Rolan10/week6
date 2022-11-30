@@ -23,8 +23,10 @@ public class Opportunity {
     @OneToOne(mappedBy = "opportunity")
     private Client client;
 
-    public Client getClient() {
-        return client;
+    public int getClient() {
+        if(client != null)
+        return client.getClient_id();
+        else return -1;
     }
 
     public void setClient(Client client) {
@@ -35,6 +37,18 @@ public class Opportunity {
         return status;
     }
 
+    public Opportunity(String name, String lastName, boolean status, List<Contact> contacts, Client client) {
+        this.name = name;
+        this.lastName = lastName;
+        this.status = status;
+        this.contacts = contacts;
+        this.client = client;
+    }
+
+    public Opportunity(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
 
     public Opportunity(int id, String name, String lastName, boolean status, ArrayList<Contact> contacts) {
         this.opportunity_id = id;
