@@ -23,6 +23,11 @@ public class Opportunity {
     @OneToOne(mappedBy = "opportunity")
     private Client client;
 
+
+
+    /**
+     * @return the client id.
+     * */
     public int getClient() {
         if(client != null)
         return client.getClient_id();
@@ -95,10 +100,6 @@ public class Opportunity {
 
     public List<Contact> getContacts() {
         return contacts;
-    }
-
-    public void setContacts(ArrayList<Contact> contacts) {
-        this.contacts = contacts;
     }
 
     public void addContact(Contact contact) {

@@ -70,7 +70,7 @@ public class contactTests {
         contact.setDate(new Date());
         contact.setInformation("email@address.com");
         Contact c = contactService.addContact(contact, name, lastName); // The opportunity prueba prueba is already a client.
-        assertEquals(c.getClientObject().getContacts().get(0).getContact_id(), c.getContact_id());
+        assertEquals(1,c.getClient()); // The client prueba prueba has id 1.
 
     }
 }

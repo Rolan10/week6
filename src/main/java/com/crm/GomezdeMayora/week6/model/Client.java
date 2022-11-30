@@ -61,28 +61,8 @@ public class Client {
         this.contacts = new ArrayList<>();
     }
 
-    public int getId() {
-        return client_id;
-    }
-
-    public void setId(int id) {
-        this.client_id = id;
-    }
-
-    public Opportunity getOportunity() {
-        return opportunity;
-    }
-
-    public void setOportunity(Opportunity opportunity) {
-        this.opportunity = opportunity;
-    }
-
     public List<Contact> getContacts() {
         return contacts;
-    }
-
-    public void setContacts(ArrayList<Contact> contacts) {
-        this.contacts = contacts;
     }
 
     public String getProduct() {

@@ -1,8 +1,11 @@
 package com.crm.GomezdeMayora.week6.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -48,6 +51,19 @@ public class Contact {
         }
     }
 
+    public Contact(String method, Date date, String information) {
+        this.method = method;
+        this.date =date;
+        this.information = information;
+    }
+    //needed for JSON parse.
+    public void setDate(String date){
+        try{
+        this.date = new SimpleDateFormat("yyyy-MM-dd").parse(date);}catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
     public void setMethod(String method) {
         this.method = method;
     }
@@ -66,6 +82,7 @@ public class Contact {
      * @return :  the Opportunity Object
      *
      **/
+    @JsonIgnore
     public Opportunity getOpportunityObject() {
         return opportunity;
     }
@@ -90,6 +107,7 @@ public class Contact {
      * @return :  the Client Object
      *
      **/
+    @JsonIgnore
     public Client getClientObject() {
         return client;
     }
