@@ -51,7 +51,10 @@ public class Contact {
     public void setMethod(String method) {
         this.method = method;
     }
-
+    /**
+     * @return : id of the Opportunity if exists or -1 if not
+     *
+     **/
     public int getOpportunity() {
 
         if(opportunity != null){
@@ -59,11 +62,22 @@ public class Contact {
         }else return -1;
         //return opportunity.getOpportunity_id();
     }
+    /**
+     * @return :  the Opportunity Object
+     *
+     **/
+    public Opportunity getOpportunityObject() {
+        return opportunity;
+    }
 
     public void setOpportunity(Opportunity opportunity) {
         this.opportunity = opportunity;
     }
 
+    /**
+     * @return : id of the client if exists or -1 if not
+     *
+     **/
     public int getClient() {
         if (client != null) {
             return client.getClient_id();
@@ -71,6 +85,13 @@ public class Contact {
             return -1;
         }
        // return client.getClient_id();
+    }
+    /**
+     * @return :  the Client Object
+     *
+     **/
+    public Client getClientObject() {
+        return client;
     }
 
     public void setClient(Client client) {

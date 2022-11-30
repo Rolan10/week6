@@ -49,4 +49,16 @@ public class contactTests {
         assertEquals(c.getOpportunity(), 1);
     }
 
+    @Test
+    void AddContacts_WhenOpportunityDoesntExistInDB_CreateAndAddContactToOpportunity() {
+        String name = "Rolan";
+        String lastName = "Gomez";
+        Contact contact = new Contact();
+        contact.setMethod("Email");
+        contact.setDate(new Date());
+        contact.setInformation("email@address.com");
+        Contact c = contactService.addContact(contact, name, lastName); // The opportunity Rolan Gomez doesn't exist in database.
+        assertEquals(c.getOpportunityObject().getName(), name);
+        assertEquals(c.getOpportunityObject().getLastName(), lastName);
+    }
 }
