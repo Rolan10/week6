@@ -55,4 +55,17 @@ public class userTests {
         Assertions.assertEquals(user.getPassword(), result.getPassword());
     }
 
+    @Test
+    public void Login_LoggingInWithIncorrectCredentials_HandleExceptionAndReturnVoidUser(){
+
+        String username = "1"; // This is not a valid email
+        String password = "1"; // This is not a valid password
+        User user = new User(username, password);
+        User result = testService.Login(user);
+        user.setEmail(user.getEmail().toLowerCase());
+        Assertions.assertEquals("", result.getEmail());
+        Assertions.assertEquals("", result.getPassword());
+
+    }
+
 }
