@@ -61,4 +61,16 @@ public class contactTests {
         assertEquals(c.getOpportunityObject().getName(), name);
         assertEquals(c.getOpportunityObject().getLastName(), lastName);
     }
+    @Test
+    void AddContacts_WhenClientExistInDB_AddContactToClient() {
+        String name = "prueba";
+        String lastName = "prueba";
+        Contact contact = new Contact();
+        contact.setMethod("Email");
+        contact.setDate(new Date());
+        contact.setInformation("email@address.com");
+        Contact c = contactService.addContact(contact, name, lastName); // The opportunity prueba prueba is already a client.
+        assertEquals(c.getClientObject().getContacts().get(0).getContact_id(), c.getContact_id());
+
+    }
 }

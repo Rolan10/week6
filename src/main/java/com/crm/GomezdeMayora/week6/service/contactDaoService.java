@@ -52,6 +52,7 @@ public class contactDaoService {
             op = OpportunityService.findOpportunityByNameAndLastName(name, lastName); //get the opportunity that already exists.
             if (op.isStatus()) {//If a Client exists for this opportunity
                 contact.setClient(ClientService.getClientById(op.getClient())); //get the client and set it into the contact.
+                System.out.println(contact.getClientObject().toString());
             } else contact.setOpportunity(op);// If not client yet, just set the opportunity.
 
             contactrepository.save(contact); //save the contact.
