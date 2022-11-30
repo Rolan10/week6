@@ -13,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.transaction.Transactional;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest(classes = Week6Application.class)
 @Transactional // This annotation is used to rollback the changes made in the database after the test.
 public class contactTests {
@@ -26,11 +28,11 @@ public class contactTests {
         List<Contact> contactList = contactService.getContacts();
         int cont = 0;
         for (Contact contact : contactList) {
-            if (contact.getContact_id() == -1 && contact.getClient() == -1) { //If there is a contact without opportunities or client, the test fails.
+            if (contact.getOpportunity()== -1 && contact.getClient() == -1) { //If there is a contact without opportunities or client, the test fails.
                 cont++;
             }
 
         }
-        Assertions.assertThat(cont == 0);
+        assertEquals(0, cont);
     }
 }

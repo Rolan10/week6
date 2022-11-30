@@ -53,7 +53,11 @@ public class Contact {
     }
 
     public int getOpportunity() {
-        return opportunity.getOpportunity_id();
+
+        if(opportunity != null){
+            return opportunity.getOpportunity_id();
+        }else return -1;
+        //return opportunity.getOpportunity_id();
     }
 
     public void setOpportunity(Opportunity opportunity) {
