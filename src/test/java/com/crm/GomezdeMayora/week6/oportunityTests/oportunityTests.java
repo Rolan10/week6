@@ -48,7 +48,7 @@ public class oportunityTests {
     }
     @Test
     public void getOpportunityById_WhenCalled_HandleEmptyResultDataAccessException() {
-        Opportunity opportunity = opportunityService.getOpportunityById(3); // The id 3 doesn't exist in database.
+        Opportunity opportunity = opportunityService.getOpportunityById(-1); // The id -1 doesn't exist in database.
         Assertions.assertThat(opportunity).isNull();
     }
 }

@@ -22,7 +22,7 @@ public class opportunityDaoService {
 
     public Opportunity getOpportunityById(int id) {
 
-        return null;
+        return opportunityrepository.findById(id).orElse(null); // if not opportunity found, return null. Exception is controlled by the interface.
     }
 
     public Opportunity addOpportunity(Opportunity opportunity) {
