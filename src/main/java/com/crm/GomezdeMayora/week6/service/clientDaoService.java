@@ -17,6 +17,7 @@ public class clientDaoService {
     private clientRepository clientrepository;
     @Autowired
     private opportunityDaoService opportunityService;
+
     public List<Client> getClients() {
         return clientrepository.findAll();
     }
@@ -27,15 +28,17 @@ public class clientDaoService {
      * @param : The client that will be created.
      * @return the client that has been created.
      **/
-    public Client addClient(Opportunity opportunity,String product) {
-       Opportunity o = opportunityService.findOpportunityByNameAndLastName(opportunity.getName(),opportunity.getLastName());
-       if(o != null) {//The opportunity exist
-       Client c = new Client();
-       o.setStatus(true);
-       c.setOpportunity(o);
-       c.setProduct(product);
-       clientrepository.save(c); //Save the client
-       }
+    public Client addClient(Opportunity opportunity, String product) {
+        Opportunity o = opportunityService.findOpportunityByNameAndLastName(opportunity.getName(), opportunity.getLastName());
+        if (!o.isStatus()) {//if Opportunity is not client yet.
+            if (o != null) {//The opportunity exist
+                Client c = new Client();
+                o.setStatus(true);
+                c.setOpportunity(o);
+                c.setProduct(product);
+                clientrepository.save(c); //Save the client
+            }
+        }
         return null;
     }
 
@@ -45,8 +48,9 @@ public class clientDaoService {
 
     /**
      * This function will delete the client specified by the id.
+     *
      * @return the Client deleted.
-     * **/
+     **/
     public Client deleteClient(int id) {
         return null;
     }
