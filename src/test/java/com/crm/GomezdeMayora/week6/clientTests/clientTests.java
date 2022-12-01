@@ -24,7 +24,7 @@ public class clientTests {
     @Test
     public void addClients_WhenOpportunityExistInDataBase_CreateTheClientAndAssociateToTheOpportunity() {
 
-        Opportunity o = new Opportunity("Rolan", "Gomez"); // Opportunity that exist in the database.
+        Opportunity o = new Opportunity("Rolan", "Gomez de Mayora"); // Opportunity that exist in the database.
         String product = "API"; // Product bought for the client.
         Client result = client.addClient(o, product);
         assertEquals("Rolan", result.getOpportunity().getName());
