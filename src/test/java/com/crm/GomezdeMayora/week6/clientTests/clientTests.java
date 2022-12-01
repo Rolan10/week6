@@ -30,5 +30,14 @@ public class clientTests {
         assertEquals("Rolan", result.getOpportunity().getName());
         assertEquals("Gomez", result.getOpportunity().getLastName());
     }
+    @Test
+    public void addClients_WhenOpportunityDoesNotExistInDataBase_DoNotCreate(){
+
+        Opportunity o = new Opportunity("1", "1"); // Opportunity that doesn't exist in the database.
+        String product = "API"; // Product bought for the client.
+        Client result = client.addClient(o, product);
+        assertEquals(null, result);
+
+    }
 
 }
