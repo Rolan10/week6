@@ -28,7 +28,6 @@ public class clientDaoService {
      * @return the client that has been created.
      **/
     public Client addClient(Opportunity opportunity,String product) {
-        System.out.println(opportunity.toString());
        Opportunity o = opportunityService.findOpportunityByNameAndLastName(opportunity.getName(),opportunity.getLastName());
        if(o != null) {//The opportunity exist
        Client c = new Client();
