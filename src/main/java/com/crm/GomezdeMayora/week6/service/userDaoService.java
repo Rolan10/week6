@@ -31,7 +31,11 @@ public class userDaoService {
 
         return null;
     }
-
+/**
+ * Login method will check if the user exists in the database and if the password is correct.
+ * @param user : The user that will be checked.
+ * @return the user if it exists and the password is correct, if not it will return void user.
+ * */
     public User Login(@NotNull User user) {
         try{
         User result = userrepository.findUserByEmailAndPassword(user.getEmail(), user.getPassword());

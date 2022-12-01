@@ -2,6 +2,7 @@ package com.crm.GomezdeMayora.week6.controller;
 
 
 import com.crm.GomezdeMayora.week6.model.Client;
+import com.crm.GomezdeMayora.week6.model.Opportunity;
 import com.crm.GomezdeMayora.week6.service.clientDaoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +28,10 @@ public class clientController {
         return service.getClients();
     }
 
-    @PostMapping("/addclients/{client}")
-    public Client addClient(@PathVariable Client client) {
-        service.addClient(client);
-        return client;
+    @PostMapping("/addclients{product}")
+    public Client addClient(@RequestBody Opportunity opportunity , @RequestParam(value="product") String product) {
+
+        return service.addClient(opportunity,product);
     }
 
     @DeleteMapping("/deleteclients/{id}")
