@@ -11,13 +11,13 @@ public class Opportunity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int opportunity_id;
-    @Column(name = "name")
+    @Column(name = "name",unique = true)
     private String name;
-    @Column(name = "last_Name")
+    @Column(name = "last_Name",unique = true)
     private String lastName;
     @Column(name = "status")
     private boolean status;
-    @OneToMany(mappedBy = "opportunity")
+    @OneToMany(mappedBy = "opportunity" , cascade = CascadeType.ALL)
     private List<Contact> contacts;
 
     @OneToOne(mappedBy = "opportunity")

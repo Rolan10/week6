@@ -29,13 +29,13 @@ public class clientController {
     }
 
     @PostMapping("/addclients{product}")
-    public Client addClient(@RequestBody Opportunity opportunity , @RequestParam(value="product") String product) {
+    public Client addClient(@RequestBody Opportunity opportunity, @RequestParam(value = "product") String product) {
 
-        return service.addClient(opportunity,product);
+        return service.addClient(opportunity, product);
     }
 
-    @DeleteMapping("/deleteclients/{id}")
-    public Client deleteClient(@PathVariable int id) {
+    @DeleteMapping("/deleteclients{id}")
+    public Client deleteClient(@RequestParam(value = "id") int id) {
         return service.deleteClient(id);
-    }
+    }//delete doesn't accept body
 }

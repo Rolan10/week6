@@ -10,10 +10,10 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int client_id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "opportunity_id")
     private Opportunity opportunity;
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client" , cascade = CascadeType.ALL)
     private List<Contact> contacts;
     @Column(name = "Product")
     private String product;

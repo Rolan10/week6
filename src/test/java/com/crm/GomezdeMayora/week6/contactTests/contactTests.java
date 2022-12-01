@@ -63,8 +63,8 @@ public class contactTests {
     }
     @Test
     void AddContacts_WhenClientExistInDB_AddContactToClient() {
-        String name = "prueba";
-        String lastName = "prueba";
+        String name = "Rolan";
+        String lastName = "Gomez de Mayora";
         Contact contact = new Contact();
         contact.setMethod("Email");
         contact.setDate(new Date());

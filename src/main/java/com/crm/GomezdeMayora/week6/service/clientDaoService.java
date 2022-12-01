@@ -54,6 +54,11 @@ public class clientDaoService {
      * @return the Client deleted.
      **/
     public Client deleteClient(int id) {
+        Client c = getClientById(id);
+        if (c != null) {
+            clientrepository.delete(c);
+            return c;
+        }
         return null;
     }
 
