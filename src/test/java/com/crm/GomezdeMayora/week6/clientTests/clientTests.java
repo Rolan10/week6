@@ -39,5 +39,15 @@ public class clientTests {
         assertEquals(null, result);
 
     }
+    @Test
+    public void addClients_WhenOpportunityIsClientAlready_DoNotCreate(){
+
+        Opportunity o = new Opportunity("Rolan", "Gomez de Mayora"); // Opportunity is already Client.
+        String product = "API"; // Product bought for the client.
+        Client result = client.addClient(o, product);
+        assertEquals(null, result);
+
+
+    }
 
 }
