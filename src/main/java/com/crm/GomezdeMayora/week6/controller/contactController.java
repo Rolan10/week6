@@ -17,11 +17,13 @@ public class contactController {
     }
 
     @GetMapping("/contacts")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Contact> getContacts() {
         return service.getContacts();
     }
 
     @PostMapping("/addContact{name}{lastname}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Contact addContact( @RequestParam(value="name") String name, @RequestParam(value="lastname") String lastName,@RequestBody Contact contact) {
         return service.addContact(contact, name, lastName);
     }

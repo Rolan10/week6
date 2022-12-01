@@ -18,16 +18,19 @@ public class userController {
     }
 
     @GetMapping("/users")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<User> getUsers() {
         return service.getUsers();
     }
 
     @PostMapping("/addusers")
+    @CrossOrigin(origins = "http://localhost:3000")
     public User addUser(@RequestParam User user) {
         return service.addUser(user);
     }
 
     @PostMapping("/login")
+    @CrossOrigin(origins = "http://localhost:3000")
     public User Login(@RequestBody User user) {
         System.out.println(user.getEmail() + " " + user.getPassword());
         return service.Login(user);

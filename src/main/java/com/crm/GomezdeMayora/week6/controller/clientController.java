@@ -19,22 +19,26 @@ public class clientController {
     }
 
     @GetMapping("/clients/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Client getClient(@PathVariable int id) {
         return service.getClientById(id);
     }
 
     @GetMapping("/clients")
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Client> getAllClients() {
         return service.getClients();
     }
 
     @PostMapping("/addclients{product}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Client addClient(@RequestBody Opportunity opportunity, @RequestParam(value = "product") String product) {
 
         return service.addClient(opportunity, product);
     }
 
     @DeleteMapping("/deleteclients{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Client deleteClient(@RequestParam(value = "id") int id) {
         return service.deleteClient(id);
     }//delete doesn't accept body
