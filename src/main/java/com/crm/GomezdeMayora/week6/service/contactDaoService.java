@@ -42,6 +42,10 @@ public class contactDaoService {
      * @return the contact that has been added to the list of contacts.
      */
     public Contact addContact(Contact contact, String name, String lastName) {
+        System.out.println(contact.toString());
+        if(contact.getInformation() == null
+        || contact.getDate() == null
+        || contact.getMethod() == null){return null;}
         if(name.trim().equals("")
                 || lastName.trim().equals("")
                 || contact.getInformation().trim().equals("")
