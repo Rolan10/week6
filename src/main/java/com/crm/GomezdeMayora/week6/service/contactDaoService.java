@@ -42,7 +42,12 @@ public class contactDaoService {
      * @return the contact that has been added to the list of contacts.
      */
     public Contact addContact(Contact contact, String name, String lastName) {
-
+        if(name.trim().equals("")
+                || lastName.trim().equals("")
+                || contact.getInformation().trim().equals("")
+                || contact.getMethod().trim().equals("")){ //empty
+            return null;
+        }
         Opportunity op = OpportunityService.addOpportunity(new Opportunity(name, lastName));
         if (op != null) {//If the opportunity has been created.
             contact.setOpportunity(op); // add the opportunity to the contact.

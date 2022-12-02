@@ -30,15 +30,16 @@ public class clientDaoService {
      **/
     public Client addClient(Opportunity opportunity, String product) {
         Opportunity o = opportunityService.findOpportunityByNameAndLastName(opportunity.getName(), opportunity.getLastName());
-
-        if (o != null) {//The opportunity exist
-            if (!o.isStatus()) {//if Opportunity is not client yet.
-                Client c = new Client();
-                o.setStatus(true);
-                c.setOpportunity(o);
-                c.setProduct(product);
-                clientrepository.save(c); //Save the client
-                return c;
+        if (!product.trim().equals("")) { // not empty
+            if (o != null) {//The opportunity exist
+                if (!o.isStatus()) {//if Opportunity is not client yet.
+                    Client c = new Client();
+                    o.setStatus(true);
+                    c.setOpportunity(o);
+                    c.setProduct(product);
+                    clientrepository.save(c); //Save the client
+                    return c;
+                }
             }
         }
         return null;
